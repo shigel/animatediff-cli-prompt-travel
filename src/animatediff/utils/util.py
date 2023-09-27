@@ -214,8 +214,13 @@ def prepare_motion_module():
         if os.path.exists(saved_path):
             continue
 
+        if hub_file == "temporaldiff-v1-animatediff.ckpt":
+            repo_id = "CiaraRowles/TemporalDiff"
+        else:
+            repo_id = "guoyww/animatediff"
+
         hf_hub_download(
-            repo_id="guoyww/animatediff", subfolder=PurePosixPath(path.parent), filename=PurePosixPath(path.name), local_dir="data/models/motion-module"
+            repo_id=repo_id, subfolder=PurePosixPath(path.parent), filename=PurePosixPath(path.name), local_dir="data/models/motion-module"
         )
 
 def prepare_wd14tagger():
